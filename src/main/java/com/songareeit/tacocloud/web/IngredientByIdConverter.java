@@ -22,7 +22,7 @@ import java.util.Optional;
  *  </pre>
  */
 @Component
-public class IngredientByIdConverter implements Converter<String, Optional<Ingredient>> {
+public class IngredientByIdConverter implements Converter<String, Ingredient> {
     private IngredientRepository ingredientRepo;
 
     @Autowired
@@ -31,7 +31,8 @@ public class IngredientByIdConverter implements Converter<String, Optional<Ingre
     }
 
     @Override
-    public Optional<Ingredient> convert(String id) {
-        return ingredientRepo.findById(id);
+    public Ingredient convert(String id) {
+        Optional<Ingredient> optionalIngredient = ingredientRepo.findById(id);
+        return optionalIngredient.orElse(null);
     }
 }
