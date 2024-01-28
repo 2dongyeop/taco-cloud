@@ -34,6 +34,7 @@ public class SecurityConfig {
                 .build();
     }
 
+    /* 인메모리 기반의 사용자 스토어  */
 //    @Bean
 //    public UserDetailsService userDetailsService() {
 //
@@ -50,7 +51,9 @@ public class SecurityConfig {
 //
 //        return manager;
 //    }
+    /*  */
 
+    /* JDBC 기반의 사용자 스토어  */
     @Autowired
     DataSource dataSource;
 
@@ -58,8 +61,16 @@ public class SecurityConfig {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .jdbcAuthentication()
-                .dataSource(dataSource);
+                .dataSource(dataSource)
+                .usersByUsernameQuery(
+                        "select username, password, enabled from users " +
+                                "where username=?")
+                .authoritiesByUsernameQuery(
+                        "select username, authority from authorities " +
+                                "where username=?")
+                .passwordEncoder(new NoEncodingPasswordEncoder());
     }
+    /*  */
 
 
 }
