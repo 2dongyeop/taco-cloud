@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -54,23 +55,36 @@ public class SecurityConfig {
     /*  */
 
     /* JDBC 기반의 사용자 스토어  */
-    @Autowired
-    DataSource dataSource;
-
+//    @Autowired
+//    DataSource dataSource;
+//
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        /* JDBC 기반의 사용자 스토어  */
+//        auth
+//                .jdbcAuthentication()
+//                .dataSource(dataSource)
+//                .usersByUsernameQuery(
+//                        "select username, password, enabled from users " +
+//                                "where username=?")
+//                .authoritiesByUsernameQuery(
+//                        "select username, authority from authorities " +
+//                                "where username=?")
+//                .passwordEncoder(new NoEncodingPasswordEncoder());
+
+        /* LDAP 기반의 사용자 스토어  */
         auth
-                .jdbcAuthentication()
-                .dataSource(dataSource)
-                .usersByUsernameQuery(
-                        "select username, password, enabled from users " +
-                                "where username=?")
-                .authoritiesByUsernameQuery(
-                        "select username, authority from authorities " +
-                                "where username=?")
-                .passwordEncoder(new NoEncodingPasswordEncoder());
+                .ldapAuthentication()
+                .userSearchBase("ou=people")
+                .userSearchFilter("(uid={0})")
+                .groupSearchBase("ou=groups")
+                .groupSearchFilter("member={0}")
+                .contextSource()
+                .root("dc=tacocloud,dc=com")
+                .ldif("classpath:users.ldif")
+                .and()
+                .passwordCompare()
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .passwordAttribute("userPasscode");
     }
-    /*  */
-
-
 }
