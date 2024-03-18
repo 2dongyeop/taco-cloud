@@ -15,7 +15,7 @@
     <description>taco-cloud</description>
     <properties>
         <java.version>17</java.version>
-<!--        <h2.version>1.4.196</h2.version>-->
+        <!--        <h2.version>1.4.196</h2.version>-->
     </properties>
     <dependencies>
         <dependency>
@@ -82,6 +82,12 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- 아파치 ActiveMQ Artemis (차세대 버전) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-artemis</artifactId>
         </dependency>
 
         <dependency>

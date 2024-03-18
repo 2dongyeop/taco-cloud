@@ -1,6 +1,6 @@
 package com.songareeit.tacocloud.security;
 
-import com.songareeit.tacocloud.User;
+import com.songareeit.tacocloud.domain.User;
 import lombok.Data;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

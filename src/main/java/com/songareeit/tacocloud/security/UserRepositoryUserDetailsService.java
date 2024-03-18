@@ -1,6 +1,6 @@
 package com.songareeit.tacocloud.security;
 
-import com.songareeit.tacocloud.User;
+import com.songareeit.tacocloud.domain.User;
 import com.songareeit.tacocloud.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

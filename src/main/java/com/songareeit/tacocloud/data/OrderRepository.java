@@ -1,6 +1,6 @@
 package com.songareeit.tacocloud.data;
 
-import com.songareeit.tacocloud.Order;
+import com.songareeit.tacocloud.domain.Order;
 import org.springframework.data.repository.CrudRepository;
 
 /**

@@ -1,4 +1,4 @@
-package com.songareeit.tacocloud;
+package com.songareeit.tacocloud.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

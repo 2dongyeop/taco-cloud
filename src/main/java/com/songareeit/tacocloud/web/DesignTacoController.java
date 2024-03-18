@@ -1,8 +1,8 @@
 package com.songareeit.tacocloud.web;
 
-import com.songareeit.tacocloud.Ingredient;
-import com.songareeit.tacocloud.Order;
-import com.songareeit.tacocloud.Taco;
+import com.songareeit.tacocloud.domain.Ingredient;
+import com.songareeit.tacocloud.domain.Order;
+import com.songareeit.tacocloud.domain.Taco;
 import com.songareeit.tacocloud.data.IngredientRepository;
 import com.songareeit.tacocloud.data.TacoRepository;
 import jakarta.validation.Valid;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.songareeit.tacocloud.Ingredient.*;
+import static com.songareeit.tacocloud.domain.Ingredient.*;
 
 /**
  * @author 이동엽(Dongyeop, Lee)

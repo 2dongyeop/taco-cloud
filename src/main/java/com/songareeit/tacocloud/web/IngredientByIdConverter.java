@@ -1,6 +1,6 @@
 package com.songareeit.tacocloud.web;
 
-import com.songareeit.tacocloud.Ingredient;
+import com.songareeit.tacocloud.domain.Ingredient;
 import com.songareeit.tacocloud.data.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;

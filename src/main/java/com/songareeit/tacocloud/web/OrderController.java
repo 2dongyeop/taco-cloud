@@ -1,11 +1,10 @@
 package com.songareeit.tacocloud.web;
 
-import com.songareeit.tacocloud.Order;
+import com.songareeit.tacocloud.domain.Order;
 import com.songareeit.tacocloud.data.OrderRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
